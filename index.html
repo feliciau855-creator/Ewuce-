@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ewuce Progressive Academy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a1628;
+            color: #e0e6ed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ============================================================
+           LOGIN CONTAINER
+           ============================================================ */
+        .login-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1b33 100%);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ============================================================
+           LEFT SIDE - BRANDING
+           ============================================================ */
+        .login-brand {
+            background: linear-gradient(135deg, #0a1628 0%, #16203a 50%, #0d1b33 100%);
+            padding: 3rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-brand::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .login-brand::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+        }
+
+        .brand-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .school-emblem {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #c9a84c, #a8882a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        .school-emblem i {
+            font-size: 2.5rem;
+            color: #0a1628;
+        }
+
+        .school-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+
+        .school-motto {
+            font-size: 1rem;
+            color: #c9a84c;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .school-motto i {
+            font-size: 0.75rem;
+        }
+
+        .welcome-message h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .welcome-message p {
+            font-size: 1.05rem;
+            color: #a0b4c9;
+            line-height: 1.6;
+            max-width: 420px;
+        }
+
+        .school-features {
+            margin: 2rem 0 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #c0d0e0;
+            font-size: 0.95rem;
+        }
+
+        .feature-item i {
+            color: #c9a84c;
+            font-size: 1rem;
+        }
+
+        .school-info {
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .school-info p {
+            color: #8899aa;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .school-info i {
+            color: #c9a84c;
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+
+        /* ============================================================
+           RIGHT SIDE - LOGIN FORM
+           ============================================================ */
+        .login-form-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(10, 22, 40, 0.9) 0%, #0a1628 100%);
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-logo i {
+            font-size: 2rem;
+            color: #c9a84c;
+        }
+
+        .login-logo span {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .login-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #8899aa;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================================
+           ALERTS
+           ============================================================ */
+        .alert {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            animation: slideDown 0.3s ease;
+        }
+
+        .alert.show {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-success {
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+
+        .alert-error {
+            background: rgba(231, 76, 60, 0.12);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+
+        .alert i {
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           FORM ELEMENTS
+           ============================================================ */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #b0c4d8;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label i {
+            color: #c9a84c;
+            font-size: 0.8rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.8rem 2.5rem 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: #e0e6ed;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #c9a84c;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+        }
+
+        .input-wrapper input::placeholder {
+            color: #556677;
+        }
+
+        .input-wrapper .input-icon {
+            position: absolute;
+            right: 1rem;
+            color: #556677;
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #556677;
+            cursor: pointer;
+            padding: 0.25rem;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: #c9a84c;
+        }
+
+        .form-error {
+            color: #e74c3c;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        /* ============================================================
+           FORM OPTIONS
+           ============================================================ */
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #8899aa;
+            font-size: 0.85rem;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .checkbox-wrapper input:checked + .checkmark {
+            background: #c9a84c;
+            border-color: #c9a84c;
+        }
+
+        .checkbox-wrapper input:checked + .checkmark::after {
+            content: '✓';
+            color: #0a1628;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .forgot-link {
+            color: #8899aa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            color: #c9a84c;
+        }
+
+        /* ============================================================
+           LOGIN BUTTON
+           ============================================================ */
+        .login-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #c9a84c, #a8882a);
+            border: none;
+            border-radius: 10px;
+            color: #0a1628;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .login-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.3);
+        }
+
+        .login-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-spinner {
+            display: none;
+        }
+
+        .login-btn.loading .btn-text {
+            visibility: hidden;
+        }
+
+        .login-btn.loading .btn-spinner {
+            display: inline-block;
+            position: absolute;
+        }
+
+        .secure-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            color: #556677;
+            font-size: 0.75rem;
+        }
+
+        .secure-info i {
+            color: #2ecc71;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .login-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .login-footer p {
+            color: #445566;
+            font-size: 0.8rem;
+        }
+
+        /* ============================================================
+           DASHBOARD (Hidden by default)
+           ============================================================ */
+        .dashboard {
+            display: none;
+            min-height: 100vh;
+            background: #0a1628;
+            padding: 2rem;
+        }
+
+        .dashboard.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .dashboard h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+        }
+
+        .dashboard p {
+            color: #8899aa;
+        }
+
+        .dashboard .logout-btn {
+            padding: 0.8rem 2rem;
+            background: #c9a84c;
+            color: #0a1628;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.3);
+        }
+
+        .dashboard-role-badge {
+            background: rgba(201, 168, 76, 0.15);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            color: #c9a84c;
+            font-weight: 500;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        /* ============================================================
+           MOBILE RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .login-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .login-brand {
+                padding: 2rem;
+            }
+            .school-name {
+                font-size: 1.8rem;
+            }
+            .welcome-message h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                min-height: 100vh;
+            }
+            .login-brand {
+                display: none;
+            }
+            .login-form-wrapper {
+                padding: 1.5rem;
+                background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1b33 100%);
+                min-height: 100vh;
+                align-items: center;
+            }
+            .login-card {
+                padding: 2rem 1.5rem;
+                max-width: 100%;
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            .login-header h2 {
+                font-size: 1.5rem;
+            }
+            .form-options {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+            .input-wrapper input {
+                font-size: 1rem;
+                padding: 0.9rem 2.5rem 0.9rem 1rem;
+            }
+            .login-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 1.5rem 1rem;
+            }
+            .login-header h2 {
+                font-size: 1.25rem;
+            }
+            .login-header p {
+                font-size: 0.85rem;
+            }
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            .login-btn {
+                padding: 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    LOGIN PAGE
+    ============================================================ -->
+    <div class="login-container" id="loginContainer">
+        <!-- Left Side - Branding -->
+        <div class="login-brand">
+            <div class="brand-content">
+                <div class="school-emblem">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="school-name">Ewuce Progressive Academy</div>
+                <div class="school-motto"><i class="fas fa-cross"></i> In God We Trust</div>
+
+                <div class="welcome-message">
+                    <h1>Welcome Back</h1>
+                    <p>Access your school management portal. Secure, efficient, and designed for excellence.</p>
+                </div>
+
+                <div class="school-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Academic Excellence</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Moral &amp; Spiritual Training</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Holistic Development</span>
+                    </div>
+                </div>
+
+                <div class="school-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Gachi Area, Via Army Barracks, Bida, Niger State</p>
+                    <p><i class="fas fa-phone"></i> 0706 625 6251 | 0915 475 6554</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="login-form-wrapper">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-logo">
+                        <i class="fas fa-school"></i>
+                        <span>EWUCE</span>
+                    </div>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to Ewuce Progressive Academy Portal</p>
+                </div>
+
+                <!-- Alert Messages -->
+                <div class="alert alert-error" id="alertError">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorMessage">Invalid username or password.</span>
+                </div>
+                <div class="alert alert-success" id="alertSuccess">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="successMessage">Login successful. Redirecting...</span>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" 
+                                   id="username" 
+                                   name="username" 
+                                   placeholder="Enter your username"
+                                   required
+                                   autocomplete="username"
+                                   autofocus />
+                            <i class="fas fa-user input-icon"></i>
+                        </div>
+                        <div class="form-error" id="usernameError">Username is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" 
+                                   id="password" 
+                                   name="password" 
+                                   placeholder="Enter your password"
+                                   required
+                                   autocomplete="current-password" />
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <i class="fas fa-lock input-icon"></i>
+                        </div>
+                        <div class="form-error" id="passwordError">Password is required.</div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" name="remember" id="remember" />
+                            <span class="checkmark"></span>
+                            Remember Me
+                        </label>
+                        <span class="forgot-link" onclick="alert('Password reset link will be sent to your email.')">Forgot Password?</span>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="loginBtn">
+                        <span class="btn-text">Sign In</span>
+                        <span class="btn-spinner"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+
+                    <div class="secure-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secured with SSL encryption</span>
+                    </div>
+                </form>
+
+                <div class="login-footer">
+                    <p>&copy; 2026 Ewuce Progressive Academy. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    DASHBOARD (Hidden by default)
+    ============================================================ -->
+    <div class="dashboard" id="dashboard">
+        <i class="fas fa-shield-alt" style="font-size: 4rem; color: #c9a84c; margin-bottom: 1rem;"></i>
+        <h1 id="dashboardUser">Welcome, Admin</h1>
+        <div class="dashboard-role-badge" id="dashboardRole">Administrator Dashboard</div>
+        <p style="margin-top: 1rem; color: #556677;">
+            This is a placeholder dashboard. The full dashboard will be built in Phase 4.
+        </p>
+        <button onclick="logoutUser()" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // USER DATABASE (Simulated)
+        // ============================================================
+        const users = [
+            { 
+                username: 'Ewuce2026/2027', 
+                password: '1234567', 
+                fullName: 'School Administrator', 
+                role: 'Administrator' 
+            },
+            { 
+                username: 'teacher1', 
+                password: '1234567', 
+                fullName: 'John Doe Teacher', 
+                role: 'Teacher' 
+            },
+            { 
+                username: 'student1', 
+                password: '1234567', 
+                fullName: 'Jane Student', 
+                role: 'Student' 
+            },
+            { 
+                username: 'parent1', 
+                password: '1234567', 
+                fullName: 'Mary Parent', 
+                role: 'Parent' 
+            }
+        ];
+
+        // ============================================================
+        // DOM ELEMENTS
+        // ============================================================
+        const loginContainer = document.getElementById('loginContainer');
+        const dashboard = document.getElementById('dashboard');
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const togglePasswordBtn = document.querySelector('.toggle-password');
+        const usernameError = document.getElementById('usernameError');
+        const passwordError = document.getElementById('passwordError');
+        const alertError = document.getElementById('alertError');
+        const alertSuccess = document.getElementById('alertSuccess');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const dashboardUser = document.getElementById('dashboardUser');
+        const dashboardRole = document.getElementById('dashboardRole');
+
+        // ============================================================
+        // TOGGLE PASSWORD VISIBILITY
+        // ============================================================
+        if (togglePasswordBtn) {
+            togglePasswordBtn.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                const icon = this.querySelector('i');
+                if (type === 'text') {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        }
+
+        // ============================================================
+        // FORM VALIDATION
+        // ============================================================
+        function validateField(input, errorElement) {
+            const value = input.value.trim();
+            let isValid = true;
+            let errorMsg = '';
+
+            if (input.id === 'username') {
+                if (value === '') {
+                    isValid = false;
+                    errorMsg = 'Username is required.';
+                } else if (value.length < 3) {
+                    isValid = false;
+                    errorMsg = 'Username must be at least 3 characters.';
+                }
+            } else if (input.id === 'password') {
+                if (value === '') {
+                    isValid = false;
+                    errorMsg = 'Password is required.';
+                } else if (value.length < 4) {
+                    isValid = false;
+                    errorMsg = 'Password must be at least 4 characters.';
+                }
+            }
+
+            if (!isValid) {
+                errorElement.textContent = errorMsg;
+                errorElement.classList.add('show');
+                input.style.borderColor = '#e74c3c';
+            } else {
+                errorElement.classList.remove('show');
+                input.style.borderColor = '';
+            }
+
+            return isValid;
+        }
+
+        // Real-time validation on blur
+        usernameInput.addEventListener('blur', function() {
+            validateField(this, usernameError);
+        });
+
+        passwordInput.addEventListener('blur', function() {
+            validateField(this, passwordError);
+        });
+
+        // Clear errors on focus
+        usernameInput.addEventListener('focus', function() {
+            usernameError.classList.remove('show');
+            this.style.borderColor = '';
+        });
+
+        passwordInput.addEventListener('focus', function() {
+            passwordError.classList.remove('show');
+            this.style.borderColor = '';
+        });
+
+        // ============================================================
+        // SHOW/HIDE ALERTS
+        // ============================================================
+        function showAlert(type, message) {
+            if (type === 'error') {
+                errorMessage.textContent = message;
+                alertError.classList.add('show');
+                alertSuccess.classList.remove('show');
+            } else {
+                successMessage.textContent = message;
+                alertSuccess.classList.add('show');
+                alertError.classList.remove('show');
+            }
+        }
+
+        function hideAlerts() {
+            alertError.classList.remove('show');
+            alertSuccess.classList.remove('show');
+        }
+
+        // ============================================================
+        // LOGIN HANDLER
+        // ============================================================
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            hideAlerts();
+
+            // Validate fields
+            const isUsernameValid = validateField(usernameInput, usernameError);
+            const isPasswordValid = validateField(passwordInput, passwordError);
+
+            if (!isUsernameValid || !isPasswordValid) {
+                return;
+            }
+
+            // Show loading state
+            loginBtn.disabled = true;
+            loginBtn.classList.add('loading');
+
+            // Simulate authentication delay
+            setTimeout(() => {
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                // Find user
+                const user = users.find(u => 
+                    u.username === username && u.password === password
+                );
+
+                if (user) {
+                    // Login successful
+                    showAlert('success', 'Login successful. Redirecting...');
+                    
+                    // Store session data
+                    sessionStorage.setItem('loggedIn', 'true');
+                    sessionStorage.setItem('username', user.username);
+                    sessionStorage.setItem('fullName', user.fullName);
+                    sessionStorage.setItem('role', user.role);
+
+                    // Redirect to dashboard after delay
+                    setTimeout(() => {
+                        showDashboard(user);
+                        loginBtn.disabled = false;
+                        loginBtn.classList.remove('loading');
+                    }, 1000);
+                } else {
+                    // Login failed
+                    showAlert('error', 'Invalid username or password.');
+                    loginBtn.disabled = false;
+                    loginBtn.classList.remove('loading');
+                    
+                    // Clear password
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            }, 800);
+        });
+
+        // ============================================================
+        // SHOW DASHBOARD
+        // ============================================================
+        function showDashboard(user) {
+            // Hide login, show dashboard
+            loginContainer.style.display = 'none';
+            dashboard.classList.add('active');
+            
+            // Update dashboard content
+            dashboardUser.textContent = `Welcome, ${user.fullName}`;
+            dashboardRole.textContent = `${user.role} Dashboard`;
+        }
+
+        // ============================================================
+        // LOGOUT
+        // ============================================================
+        function logoutUser() {
+            if (confirm('Are you sure you want to logout?')) {
+                // Clear session
+                sessionStorage.clear();
+                
+                // Show login, hide dashboard
+                loginContainer.style.display = 'grid';
+                dashboard.classList.remove('active');
+                
+                // Clear form
+                usernameInput.value = '';
+                passwordInput.value = '';
+                hideAlerts();
+                
+                // Focus on username
+                usernameInput.focus();
+            }
+        }
+
+        // ============================================================
+        // CHECK SESSION ON LOAD
+        // ============================================================
+        (function checkSession() {
+            const loggedIn = sessionStorage.getItem('loggedIn');
+            if (loggedIn === 'true') {
+                const username = sessionStorage.getItem('username');
+                const fullName = sessionStorage.getItem('fullName');
+                const role = sessionStorage.getItem('role');
+                
+                // Find user in database to get fresh data
+                const user = users.find(u => u.username === username);
+                if (user) {
+                    showDashboard(user);
+                } else {
+                    // Invalid session, clear and show login
+                    sessionStorage.clear();
+                }
+            }
+        })();
+
+        // ============================================================
+        // ENTER KEY SUPPORT (Handled by form submit)
+        // ============================================================
+
+        // ============================================================
+        // AUTO-FOCUS
+        // ============================================================
+        if (usernameInput && !sessionStorage.getItem('loggedIn')) {
+            usernameInput.focus();
+        }
+
+        // ============================================================
+        // DEMO CREDENTIALS HELPER (Click to auto-fill)
+        // ============================================================
+        console.log('=== EWUCE PROGRESSIVE ACADEMY ===');
+        console.log('Demo Credentials:');
+        console.log('Admin:   Ewuce2026/2027 | 1234567');
+        console.log('Teacher: teacher1 | 1234567');
+        console.log('Student: student1 | 1234567');
+        console.log('Parent:  parent1 | 1234567');
+        console.log('=================================');
+    </script>
+</body>
+</html>
